@@ -7,7 +7,7 @@ We've been trying to simplify the deployment processes of our Rails apps at work
 ###Ubuntu 12.04
 First, we tried creating a layer with these options:
 
-{<1>}![a](https://dl.dropboxusercontent.com/u/11024433/Screenshots/Screenshot%202014-01-03%2010.51.37.png)
+![a](https://dl.dropboxusercontent.com/u/11024433/Screenshots/Screenshot%202014-01-03%2010.51.37.png)
 
 We booted a 64-bit Ubuntu 12.04 LTS instance successfully.  The Rails app was running, everyone was happy.
 
@@ -47,7 +47,7 @@ We also tried the Amazon Linux distribution, but ran into a different error with
     details.  You may need configuration options.
    
 This can be fixed by adding `libpq-dev` to the packages installed during setup:
-{<2>}![](https://dl.dropboxusercontent.com/u/11024433/Screenshots/2014-01-03_11-02-39.png)
+![](https://dl.dropboxusercontent.com/u/11024433/Screenshots/2014-01-03_11-02-39.png)
 
 But this causes yet another problem with that library. We gave up at this point and just went back to Ubuntu.
 
@@ -55,3 +55,5 @@ But this causes yet another problem with that library. We gave up at this point 
 ###What Now?
 
 We're waiting on AWS support to give us a resolution to the Chef setup error on Ubuntu.  I'll update here when we know more.
+
+Update: AWS has found a problem with their Chef recipe located here: https://github.com/aws/opsworks-cookbooks/blob/master-chef-11.4/apache2/recipes/default.rb
