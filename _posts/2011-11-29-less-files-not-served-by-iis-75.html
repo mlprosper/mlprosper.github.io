@@ -1,0 +1,13 @@
+---
+layout: post
+title: LESS files not served by IIS 7.5
+tags:
+comments: true
+---
+<p>By default IIS 7.5 won&#8217;t serve .less files to the client.  In order to change that, I needed to set a MIME type in IIS Manager.  First open up IIS Manager, and click the node for your web application. Choose MIME Types:</p>
+<p><img src="http://media.tumblr.com/tumblr_lvfmnqSeB71qjihew.png"/></p>
+<p>Then add a type for .less files:</p>
+<p><img src="http://media.tumblr.com/tumblr_lvfmor5yC61qjihew.png"/></p>
+<p>Click OK and Voila! You now have .less files treated like .css!</p>
+<p>To do it via the command line, please see this post:</p>
+<p><a href="http://bob.yexley.net/tag/less-css/"><a href="http://bob.yexley.net/tag/less-css/">http://bob.yexley.net/tag/less-css/</a></a></p>

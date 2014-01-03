@@ -1,0 +1,59 @@
+---
+layout: post
+title: Customizing event filter xml for Windows Server 2008 Event Viewer
+tags:
+- Technology
+- Windows
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '19924537'
+  jabber_published: '1305223676'
+  tagazine-media: a:7:{s:7:"primary";s:63:"http://mlprosper.files.wordpress.com/2011/05/eventviewerxml.png";s:6:"images";a:2:{s:67:"http://mlprosper.files.wordpress.com/2011/05/eventvieweroptiosn.png";a:6:{s:8:"file_url";s:67:"http://mlprosper.files.wordpress.com/2011/05/eventvieweroptiosn.png";s:5:"width";s:3:"364";s:6:"height";s:3:"363";s:4:"type";s:5:"image";s:4:"area";s:6:"132132";s:9:"file_path";s:0:"";}s:63:"http://mlprosper.files.wordpress.com/2011/05/eventviewerxml.png";a:6:{s:8:"file_url";s:63:"http://mlprosper.files.wordpress.com/2011/05/eventviewerxml.png";s:5:"width";s:3:"539";s:6:"height";s:3:"543";s:4:"type";s:5:"image";s:4:"area";s:6:"292677";s:9:"file_path";s:0:"";}}s:6:"videos";a:0:{}s:11:"image_count";s:1:"2";s:6:"author";s:8:"19924537";s:7:"blog_id";s:8:"19326489";s:9:"mod_stamp";s:19:"2011-05-12
+    18:07:56";}
+comments: true
+---
+Lately I've been trying to diagnose a couple of ASP.Net connection errors on our Windows Server 2008 machine.  The error would happen sporadically and I could not reproduce it locally.  In the Windows Event Viewer the xml for each event would look something like this:<code></code>
+
+<code>&lt;Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"&gt;</code>
+
+<code>&lt;System&gt;
+&lt;Provider Name="ASP.NET 2.0.50727.0" /&gt;
+&lt;EventID Qualifiers="32768"&gt;1309&lt;/EventID&gt;
+&lt;Level&gt;3&lt;/Level&gt;
+&lt;Task&gt;3&lt;/Task&gt;
+&lt;Keywords&gt;0x80000000000000&lt;/Keywords&gt;
+&lt;TimeCreated SystemTime="2011-04-25T15:45:13.000Z" /&gt;
+&lt;EventRecordID&gt;21758&lt;/EventRecordID&gt;
+&lt;Channel&gt;Application&lt;/Channel&gt;
+&lt;Computer&gt;DED432&lt;/Computer&gt;
+&lt;Security /&gt;
+&lt;/System&gt;</code>
+
+<code>&lt;EventData&gt;
+&lt;Data&gt;3005&lt;/Data&gt;
+&lt;Data&gt;An unhandled exception has occurred.&lt;/Data&gt;
+&lt;Data&gt;4/25/2011 8:45:13 AM&lt;/Data&gt;
+&lt;Data&gt;4/25/2011 3:45:13 PM&lt;/Data&gt;
+&lt;/EventData&gt;
+&lt;/Event&gt;
+</code>
+
+<code></code>I wanted to create a custom Filter on the first "Data" node of the "EventData" node so I could see how often the error occured.  To create a custom filter, I clicked on "Filter Current Log":
+
+<a href="http://mlprosper.files.wordpress.com/2011/05/eventvieweroptiosn.png"><img class="alignnone size-full wp-image-105" title="eventvieweroptiosn" src="http://mlprosper.files.wordpress.com/2011/05/eventvieweroptiosn.png" alt="" width="364" height="363" /></a>
+
+There wasn't an option to filter on any of the data in the "EventData" node, so I clicked the XML tab, unchecked the "Edit query manually" box and said Yes to the dialog:
+
+<a href="http://mlprosper.files.wordpress.com/2011/05/eventviewerxml.png"><img class="alignnone size-full wp-image-106" title="eventviewerxml" src="http://mlprosper.files.wordpress.com/2011/05/eventviewerxml.png" alt="" width="539" height="543" /></a>
+
+After some searching, here is the xml to filter on the "Data" nodes in "EventData":<code></code>
+
+&lt;QueryList&gt;
+&lt;Query Id="0" Path="Application"&gt;
+&lt;Select Path="Application"&gt;*[System[(Level=3) and (EventID=1309)]] and *[EventData[Data[1]='3005']]&lt;/Select&gt;
+&lt;/Query&gt;
+&lt;/QueryList&gt;
+
+Turns out the data is stored in an array and can be accessed with an ordinal (e.g. "Data[1]").

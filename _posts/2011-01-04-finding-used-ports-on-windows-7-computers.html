@@ -1,0 +1,23 @@
+---
+layout: post
+title: Finding used ports on Windows 7 computers
+tags:
+- Technology
+- WCF
+- Windows
+status: publish
+type: post
+published: true
+meta:
+  posterous_63e880bf12009207a8992a53b1c27d6a_post_id: '38490867'
+  posterous_63e880bf12009207a8992a53b1c27d6a_permalink: http://mprosper.posterous.com/finding-used-ports-on-windows-7-computers
+  _edit_last: '19924537'
+  tagazine-media: a:7:{s:7:"primary";s:78:"http://mlprosper.files.wordpress.com/2011/01/greenshot_2011-01-04_12-25-43.png";s:6:"images";a:2:{s:78:"http://mlprosper.files.wordpress.com/2011/01/greenshot_2011-01-04_12-25-43.png";a:6:{s:8:"file_url";s:78:"http://mlprosper.files.wordpress.com/2011/01/greenshot_2011-01-04_12-25-43.png";s:5:"width";s:3:"677";s:6:"height";s:3:"606";s:4:"type";s:5:"image";s:4:"area";s:6:"410262";s:9:"file_path";s:0:"";}s:79:"http://mlprosper.files.wordpress.com/2011/01/greenshot_2011-01-04_12-29-371.png";a:6:{s:8:"file_url";s:79:"http://mlprosper.files.wordpress.com/2011/01/greenshot_2011-01-04_12-29-371.png";s:5:"width";s:3:"412";s:6:"height";s:3:"459";s:4:"type";s:5:"image";s:4:"area";s:6:"189108";s:9:"file_path";s:0:"";}}s:6:"videos";a:0:{}s:11:"image_count";s:1:"2";s:6:"author";s:8:"19924537";s:7:"blog_id";s:8:"19326489";s:9:"mod_stamp";s:19:"2011-01-24
+    16:59:54";}
+comments: true
+---
+
+    <p>Recently while troubleshooting a WCF service on my computer I needed to find out which process was using port 33333.&nbsp; After much searching and headache I found that using this command gave me a list of ports and the corresponding ID of the process using that port:<p /> netstat -o -n -a<p /><a href='http://mlprosper.files.wordpress.com/2011/01/greenshot_2011-01-04_12-25-43.png'><img src="http://mlprosper.files.wordpress.com/2011/01/greenshot_2011-01-04_12-25-43.png?w=300" width="500" height="448" /></a>
+<p />You can then use the ID in task manager to find the process name and kill it.<br /> <img src="http://mlprosper.files.wordpress.com/2011/01/greenshot_2011-01-04_12-29-371.png?w=269" width="412" height="459" />
+<br />You might have to go to View--&gt;Select Columns to show the PID column.<p />In my case it turned out that PGPTray was using the port!</p>
+  

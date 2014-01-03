@@ -1,0 +1,11 @@
+---
+layout: post
+title: Visual Studio 2010 and Web Deploy ACLs
+tags:
+comments: true
+---
+<p>Recently I&#8217;ve started using Web Deploy directly from Visual Studio 2010.  I had everything working on the staging server at one point and stupidly didn&#8217;t record the folder specific ACL changes I had made to allow IIS to serve the assets (css, images) correctly.  The first time I used Web Deploy, all the ACLs were overwritten, and my website was no longer accessible!  After some research, I found an article detailing how to prevent VS 2010 from setting the ACLs on the target automatically:</p>
+<p><a href="http://www.orcsweb.com/blog/rick/prevent-visual-studio-2010-and-web-deploy-from-changing-acls/" title="Prevent Visual Studio 2010 and Web Deploy From Changing ACLs" target="_blank"><a href="http://www.orcsweb.com/blog/rick/prevent-visual-studio-2010-and-web-deploy-from-changing-acls/">http://www.orcsweb.com/blog/rick/prevent-visual-studio-2010-and-web-deploy-from-changing-acls/</a></a></p>
+<p>Here&#8217;s a screenshot of the place in the project file to edit for clarity:</p>
+<p><img src="http://media.tumblr.com/tumblr_lvflnekvKs1qjihew.png"/></p>
+<p>Now to figure out what the ACLs were set to originally.. Argh&#8230;</p>

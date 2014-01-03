@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Generating an SSL cert for Amazon ELB</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Generating an SSL cert for Amazon ELB</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-29T00:00:00-08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I needed to set up a new load balancer in Amazon Web Services because my previous SSL cert had expired.  The AWS management console doesn&#8217;t allow you to enter a new SSL cert apart from setting up a new ELB.  After a little research, I found a step by step tutorial laying out how to generate a new CSR and install the certificate:</p>
+<p><a href="http://stackoverflow.com/questions/6753619/how-do-i-setup-ssl-certs-on-amazon-aws-load-balancer-using-godaddy-certificates"><a href="http://stackoverflow.com/questions/6753619/how-do-i-setup-ssl-certs-on-amazon-aws-load-balancer-using-godaddy-certificates">http://stackoverflow.com/questions/6753619/how-do-i-setup-ssl-certs-on-amazon-aws-load-balancer-using-godaddy-certificates</a></a></p>
+<p>I have Git for Windows installed and it comes with openssl.  You can access the openssl executable here:</p>
+<p>c:\Program Files (x86)\git\bin</p>
+<p>When you run the commands, for some reason the files are dumped in a strange folder:</p>
+<p>C:\Users\Mike\AppData\Local\VirtualStore\Program Files (x86)\Git\bin</p>
+<p>A quick search will turn up the path where those files were dumped.</p>
+<p>Here are some screenshots from an AWS post that might help too:</p>
+<p><a href="http://aws.typepad.com/aws/2010/10/elastic-load-balancer-support-for-ssl-termination.html"><a href="http://aws.typepad.com/aws/2010/10/elastic-load-balancer-support-for-ssl-termination.html">http://aws.typepad.com/aws/2010/10/elastic-load-balancer-support-for-ssl-termination.html</a></a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-29T00:00:00-08:00" pubdate data-updated="true"></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2011/05/12/customizing-event-filter-xml-for-windows-server-2008-event-viewer.html" title="Previous Post: Customizing event filter xml for Windows Server 2008 Event Viewer">&laquo; Customizing event filter xml for Windows Server 2008 Event Viewer</a>
+      
+      
+        <a class="basic-alignment right" href="/2011/11/29/less-files-not-served-by-iis-75.html" title="Next Post: LESS files not served by IIS 7.5">LESS files not served by IIS 7.5 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>5 Reasons Not to Hire a Contract Programmer</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">5 Reasons Not to Hire a Contract Programmer</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-27T22:21:00-08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div style="float:right; margin-left:10px;"><img alt="christmas-bonus" src="/images/elbonia.png"/></div>
+
+<p>This is meant primarily for non-coders. I’ve had a lot of experience over the years in hiring contract programmers and decided to write up some of the most negative aspects of working with one. I admit - these are sweeping generalizations. However, finding a contract programmer who won’t do any of these things is tough. I’ll follow this up with a list of 5 positive things.</p>
+
+<h3>1. They don’t live up to their resume.</h3>
+
+<p>Contract programmers, especially those that have done a lot of contract work, tend to list ALL their projects and “skills” on their resume. It usually includes an alphabet soup of acronyms that means little to nothing. There’s really no way to validate that they actually know that particular technology unless you know the tech and can ask them specific questions. Be especially wary of coders who call themselves “architects”. Software architecture is an art as well as a skill. Using the Strategy pattern in one project does not an architect make. Most of the good architects I know are already paid big money at established companies.</p>
+
+<h3>2. They don’t care about your project&#39;s future.</h3>
+
+<p>Contract programmers have one job: complete the work by any means necessary.  They don’t have a vested interest in the long term success of your project, so they won&#39;t usually account for factors that might bite you hard in the future. Some examples:</p>
+
+<div style="margin:0px 15px 15px 0px;">
+ <ul style="margin-left:25px;">
+    <li>They choose a fringe technology with little support or life expectancy (Coldfusion, anyone?)</li>
+    <li>They are unwilling to give you access to the source code from the start</li>
+    <li>They insist on including licensed components (charting, barcoding, etc.)</li>
+</ul>
+</div>
+
+<h3>3. They no write or speak english too good.</h3>
+
+<p>If a contract programmer can write code that is clear and expressive, then it really doesn’t matter if they can speak your language - the code speaks for itself most of the time. The problem is when they write mangled code, then try to explain it in mangled English. Here&#39;s an example where a poorly written comments can bloat code rather than clarify it:
+<code>csharp
+// We are assigning ExamCode Value here b&#39;coz it&#39;s datatype is interger in database.
+// So we can not assign without checking of integer
+_examresults.CustomExamID = Convert.ToInt32(_resultId);
+</code></p>
+
+<h3>4. They don’t have an incentive to code well.</h3>
+
+<p>Unless they 1) know how to code cleanly and 2) have an incredible sense of self pride about their work, they WILL take shortcuts. Why should they take the time to refactor when they probably wont be working on the code in 6 months anyway? Why write code that is clear and expressive when the owner can’t even read code? Here&#39;s some code from an Indian contractor:</p>
+<div class="highlight"><pre><code class="csharp language-csharp" data-lang="csharp">    <span class="n">columnTotal</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">decimal</span><span class="p">[</span><span class="n">questions</span><span class="p">.</span><span class="n">Count</span> <span class="p">-</span> <span class="m">1</span> <span class="p">+</span> <span class="m">1</span><span class="p">];</span>
+    <span class="n">columnTotalCorrect</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">decimal</span><span class="p">[</span><span class="n">questions</span><span class="p">.</span><span class="n">Count</span> <span class="p">-</span> <span class="m">1</span> <span class="p">+</span> <span class="m">1</span><span class="p">];</span>
+</code></pre></div>
+<p>Even a non-coder should be able to pick out the LOLZ in there.</p>
+
+<p>That said, it&#39;s almost impossible not to incur “technical debt” early in a project, contractor or no.  Just know that you&#39;ll probably need to rewrite the code in the future when your company hits the big time.</p>
+
+<h3>5. They don’t understand your project.</h3>
+
+<p>It may take extra effort on your part to make a contractor understand your vertical. Clarifying specifications can be a struggle, especially if there&#39;s a language barrier. They sometimes think they understand what you say but do not realize that what they hear is not what you mean. Even the smallest difference in meaning can cause a roadblock. I once worked with a Chinese firm that just couldn&#39;t understand the difference between a &quot;Grade Level&quot; (my daughter is in eighth grade) and a &quot;Grade&quot; (my daughter&#39;s grade in Algebra was an A). I had to spend an inordinate amount of time explaining the difference. A contractor that worked on a US based education product would not have had this issue.</p>
+
+<p>Sometimes hiring a contract programmer is the best business decision you can make. Just be aware of some of the pitfalls. These are a things I&#39;ve learned along the way.  Have more tips?  Share them in the comments...</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-27T22:21:00-08:00" pubdate data-updated="true"></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/01/23/5-tips-for-hiring-a-programmer-on-a-freelancing-site.html" title="Previous Post: 5 Tips for Hiring a Programmer on a Freelancing Site">&laquo; 5 Tips for Hiring a Programmer on a Freelancing Site</a>
+      
+      
+        <a class="basic-alignment right" href="/2013/02/24/want-to-find-a-good-engineer-look-at-their-hands.html" title="Next Post: Want to find a good engineer? Look at their hands">Want to find a good engineer? Look at their hands &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Visual Studio 2010 msbuild target caching workaround</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">Your New Jekyll Site</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Visual Studio 2010 msbuild target caching workaround</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-18T00:00:00-08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Recently I created a custom msbuild .target file for one of my Visual  Studio 2010 projects.  The .target file was being imported into the  project file like so:<br /> <code> </code></p> <div id=":3s"><div><div><em>&lt;Import Project="BuildScripts\MyModules.Targets" /&gt;</em></div> <div><em><br /> </em></div> <div>Using the internal "Build" command worked perfectly. The msbuild commands in the project and .target file ran flawlessly.</div> <div><a href="http://mlprosper.files.wordpress.com/2011/01/greenshot_2011-01-18_14-16-59.png"><img class="alignnone size-full wp-image-41" title="greenshot_2011-01-18_14-16-59" src="http://mlprosper.files.wordpress.com/2011/01/greenshot_2011-01-18_14-16-59.png" alt="" width="234" height="206" /></a></div> <p>That is, until I tried to make changes to the .target file.</p> <p>For  some reason, Visual Studio would not run the updated version of the  target file contained in the project.  It seemed like the target file  was somehow cached when Visual Studio opened and would not replace it  with the version I was editing in the window.  After much searching, I  stumbled across this article on <a href="http://stackoverflow.com/" target="_blank">stackoverflow.com</a>:</p> <p><a href="http://stackoverflow.com/questions/2903803/how-can-i-prevent-external-msbuild-files-from-being-cached-by-visual-studio-dur" target="_blank">http://stackoverflow.com/questions/2903803/how-can-i-prevent-external-msbuild-files-from-being-cached-by-visual-studio-dur</a></p> <p>Apparently VS likes to cache the target files and not let go until  you startup and shutdown.  Thus far I haven't found a way to override  this behavior, so I put a workaround in place so I could edit the  .target file with impunity.</p> <p>I added a custom External Tool to VS by going to Tools --&gt;  External Tools.  I clicked Add and entered the following information:</p> <p><a href="http://mlprosper.files.wordpress.com/2011/01/greenshot_2011-01-18_13-51-32.png"><img class="alignnone size-medium wp-image-45" title="greenshot_2011-01-18_13-51-32" src="http://mlprosper.files.wordpress.com/2011/01/greenshot_2011-01-18_13-51-32.png?w=300" alt="" width="300" height="292" /></a></p> <p><strong>Command: C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe</strong><br /> (I have the .Net Framework 4.0 installed on my machine - this path may be different depending on your .Net Framework version)</p> <p><strong>Arguments: $(ProjectDir)\$(ProjectFileName) /target:Build /property:Configuration=Release /verbosity:d<br /> </strong>(These arguments will start the "Build" target in the project file  and set the Configuration parameter to "Release" as well as the  verbosity of logging to "Detailed)</p> <p><strong>Use Output window<br /> </strong>This will place the results of the msbuild command into the VS output window</p> <p>After creating this External Tool, the new command will appear in the Tools menu:</p> <p><img title="greenshot_2011-01-18_14-19-55.png" src="https://mail.google.com/mail/?ui=2&amp;ik=a0bd99a7b5&amp;view=att&amp;th=12d9b38553664aa6&amp;attid=0.1&amp;disp=emb&amp;realattid=ii_12d9b379595a19d0&amp;zw" alt="greenshot_2011-01-18_14-19-55.png" /></p> <p>Now I can build the project file as well as the associated .target file without having to worry about VS caching anything.</p></div></div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-18T00:00:00-08:00" pubdate data-updated="true"></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2011/01/18/ipad-app-review-folio-pdf-reader.html" title="Previous Post: iPad App Review - Folio PDF Reader">&laquo; iPad App Review - Folio PDF Reader</a>
+      
+      
+        <a class="basic-alignment right" href="/2011/01/24/make-airport-pickups-a-little-easier.html" title="Next Post: Using the web to make airport pickups a little easier...">Using the web to make airport pickups a little easier... &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

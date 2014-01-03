@@ -1,0 +1,27 @@
+---
+layout: post
+title: Error 401.3 - Unauthorized when moving an IIS 7 site
+tags:
+- IIS
+- Security
+- Technology
+- Windows
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '19924537'
+  jabber_published: '1300376634'
+  tagazine-media: a:7:{s:7:"primary";s:75:"http://mlprosper.files.wordpress.com/2011/03/iis-7-5-detailed-error-401.png";s:6:"images";a:2:{s:75:"http://mlprosper.files.wordpress.com/2011/03/iis-7-5-detailed-error-401.png";a:6:{s:8:"file_url";s:75:"http://mlprosper.files.wordpress.com/2011/03/iis-7-5-detailed-error-401.png";s:5:"width";s:3:"956";s:6:"height";s:3:"923";s:4:"type";s:5:"image";s:4:"area";s:6:"882388";s:9:"file_path";s:0:"";}s:70:"http://mlprosper.files.wordpress.com/2011/03/directory-permissions.png";a:6:{s:8:"file_url";s:70:"http://mlprosper.files.wordpress.com/2011/03/directory-permissions.png";s:5:"width";s:3:"365";s:6:"height";s:3:"478";s:4:"type";s:5:"image";s:4:"area";s:6:"174470";s:9:"file_path";s:0:"";}}s:6:"videos";a:0:{}s:11:"image_count";s:1:"2";s:6:"author";s:8:"19924537";s:7:"blog_id";s:8:"19326489";s:9:"mod_stamp";s:19:"2011-03-17
+    15:43:53";}
+comments: true
+---
+Recently I upgraded my computer and needed to move an IIS 7 website from one computer to another.  After copying all the files, creating the IIS application, and browsing to the local website, I got a 401.3 unauthorized error:
+
+<a href="http://mlprosper.files.wordpress.com/2011/03/iis-7-5-detailed-error-401.png"><img class="alignnone size-medium wp-image-83" title="IIS 7.5 Detailed Error - 401" src="http://mlprosper.files.wordpress.com/2011/03/iis-7-5-detailed-error-401.png?w=300" alt="" width="300" height="289" /></a>
+
+It turns out that after comparing the old and new computer directory permissions, I needed to add "Authenticated Users" to the security tab of the directory where the web files reside:
+
+<a href="http://mlprosper.files.wordpress.com/2011/03/directory-permissions.png"><img class="alignnone size-medium wp-image-84" title="directory permissions" src="http://mlprosper.files.wordpress.com/2011/03/directory-permissions.png?w=229" alt="" width="229" height="300" /></a>
+
+After applying the new security settings, the website loaded properly in my browser.

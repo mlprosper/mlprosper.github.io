@@ -1,0 +1,15 @@
+---
+layout: post
+title: Generating an SSL cert for Amazon ELB
+tags:
+comments: true
+---
+<p>I needed to set up a new load balancer in Amazon Web Services because my previous SSL cert had expired.  The AWS management console doesn&#8217;t allow you to enter a new SSL cert apart from setting up a new ELB.  After a little research, I found a step by step tutorial laying out how to generate a new CSR and install the certificate:</p>
+<p><a href="http://stackoverflow.com/questions/6753619/how-do-i-setup-ssl-certs-on-amazon-aws-load-balancer-using-godaddy-certificates"><a href="http://stackoverflow.com/questions/6753619/how-do-i-setup-ssl-certs-on-amazon-aws-load-balancer-using-godaddy-certificates">http://stackoverflow.com/questions/6753619/how-do-i-setup-ssl-certs-on-amazon-aws-load-balancer-using-godaddy-certificates</a></a></p>
+<p>I have Git for Windows installed and it comes with openssl.  You can access the openssl executable here:</p>
+<p>c:\Program Files (x86)\git\bin</p>
+<p>When you run the commands, for some reason the files are dumped in a strange folder:</p>
+<p>C:\Users\Mike\AppData\Local\VirtualStore\Program Files (x86)\Git\bin</p>
+<p>A quick search will turn up the path where those files were dumped.</p>
+<p>Here are some screenshots from an AWS post that might help too:</p>
+<p><a href="http://aws.typepad.com/aws/2010/10/elastic-load-balancer-support-for-ssl-termination.html"><a href="http://aws.typepad.com/aws/2010/10/elastic-load-balancer-support-for-ssl-termination.html">http://aws.typepad.com/aws/2010/10/elastic-load-balancer-support-for-ssl-termination.html</a></a></p>
