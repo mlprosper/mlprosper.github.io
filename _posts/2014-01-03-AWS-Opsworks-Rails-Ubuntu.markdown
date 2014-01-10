@@ -56,4 +56,9 @@ But this causes yet another problem with that library. We gave up at this point 
 
 We're waiting on AWS support to give us a resolution to the Chef setup error on Ubuntu.  I'll update here when we know more.
 
-Update: AWS has found a problem with their Chef recipe located here: https://github.com/aws/opsworks-cookbooks/blob/master-chef-11.4/apache2/recipes/default.rb
+####Update: AWS has found a problem with their Chef recipe located here: (https://github.com/aws/opsworks-cookbooks/blob/master-chef-11.4/apache2/recipes/default.rb)
+
+Their solution is to remove the last line of the `/etc/auto.master` file. Apparently this forces autofs to recheck mounted volumes and removed the ability for the error to appear. To remove the line from that file, run this simple command on the instance:
+    sudo sed -i /opsworks/d /etc/auto.master
+
+Then restart the instance.    
