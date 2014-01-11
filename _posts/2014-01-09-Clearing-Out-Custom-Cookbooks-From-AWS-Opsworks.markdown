@@ -15,6 +15,6 @@ Turns out, the cookbook is cached on the instance in a special location:
 
 `/opt/aws/opsworks/current/site-cookbooks/`
 
-Because my custom cookbook had a problem, Opsworks was not able to remove it properly and I had to clear it out yourself.  A simple `rm -r /opt/aws/opsworks/current/site-cookbooks` did the trick (I had to `sudo -i` first).
+Because my custom cookbook had a problem, Opsworks was not able to remove it properly and I had to clear it out myself.  A simple `rm -r /opt/aws/opsworks/current/site-cookbooks` did the trick (I had to `sudo -i` first).
 
 Fixing the custom cookbook template, updating the instances with the custom cookbook, then deploying again did the trick. 
