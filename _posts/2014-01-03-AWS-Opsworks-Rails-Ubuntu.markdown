@@ -52,13 +52,19 @@ This can be fixed by adding `libpq-dev` to the packages installed during setup:
 But this causes yet another problem with that library. We gave up at this point and just went back to Ubuntu.
 
 
-###What Now?
+### What Now?
 
 We're waiting on AWS support to give us a resolution to the Chef setup error on Ubuntu.  I'll update here when we know more.
 
-####Update: AWS has found a problem with their Chef recipe located here: (https://github.com/aws/opsworks-cookbooks/blob/master-chef-11.4/apache2/recipes/default.rb)
+#### Update: AWS has found a problem with their Chef recipe located here: (https://github.com/aws/opsworks-cookbooks/blob/master-chef-11.4/apache2/recipes/default.rb)
 
 Their solution is to remove the last line of the `/etc/auto.master` file. Apparently this forces autofs to recheck mounted volumes and removed the ability for the error to appear. To remove the line from that file, run this simple command on the instance:
+
     sudo sed -i /opsworks/d /etc/auto.master
 
 Then restart the instance.    
+
+#### Update 2: After an extensive chat with AWS support, they've escalated the issue in the cookbook with the Opsworks team, and I should get an update when they fix the recipe. In the meantime, the easier workaround is to use Instance-store when creating a new instance:
+![](https://dl.dropboxusercontent.com/u/11024433/Screenshots/2014-01-15_16-42-24.png)
+
+I'll post again when the cookbook issue is resolved.
