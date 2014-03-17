@@ -67,4 +67,25 @@ Then restart the instance.
 #### Update 2: After an extensive chat with AWS support, they've escalated the issue in the cookbook with the Opsworks team, and I should get an update when they fix the recipe. In the meantime, the easier workaround is to use Instance-store when creating a new instance:
 ![](https://dl.dropboxusercontent.com/u/11024433/Screenshots/2014-01-15_16-42-24.png)
 
-I'll post again when the cookbook issue is resolved.
+#### Update 3: They've updated the cookbook and now you can restart an EBS instance without a problem.  Here's the full text of their email:
+
+        The Opsworks team have released a fix for this bug in Opsworks agent version 219
+
+        Your current instances should automatically update to the latest Opsworks agent , and any new instances should receive the new agent version 219.
+
+        The process to check the Opsworks agent version is quite simple, and can be done with a simple command once ssh'd into the instance:
+
+        "sudo opsworks-agent-cli agent_report"
+
+        If your instances are reporting a different value than 219 for the Opsworks agent version, please let us know and we can have the Opsworks team apply that version to your stacks.
+
+        There is a manual way to update existing instances to the new version. The proccess is as follows:
+
+        - Change the target version in the instance:
+
+        sudo echo '219' > /var/lib/aws/opsworks/TARGET_VERSION
+
+        - Then run this command to update the agent:
+
+        sudo sh -c 'cd /opt/aws/opsworks/current && bin/lockrun --wait --verbose --lockfile=/var/lib/aws/opsworks/lockrun.lock -- /opt/aws/opsworks/current/bin/opsworks-agent-updater'
+
